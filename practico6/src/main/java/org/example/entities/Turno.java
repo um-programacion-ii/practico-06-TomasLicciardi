@@ -8,8 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Turno {
-    private int id;
+    private Integer id;
     private Medico medico;
     private Paciente paciente;
-    private Receta receta; // Puede ser null si no se generó receta
 }

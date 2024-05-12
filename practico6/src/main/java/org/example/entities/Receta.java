@@ -5,11 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Map;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Receta {
-    private int id;
-    private List<Medicamento> medicamentos; // Puede contener uno o más medicamentos
+    private Integer id;
+    private Paciente paciente;
+    private Medico medico;
+    private Map<Medicamento,Integer> medicamentos;
 }

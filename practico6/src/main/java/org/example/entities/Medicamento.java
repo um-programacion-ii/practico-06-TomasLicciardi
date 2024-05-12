@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Medicamento {
-    private int id;
+    private Integer id;
     private String nombre;
+    private String laboratorio;
+    private String droga;
 }

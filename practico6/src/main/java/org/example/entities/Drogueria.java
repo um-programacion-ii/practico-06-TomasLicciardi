@@ -4,15 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Map;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Farmacia {
+public class Drogueria {
     private Integer id;
     private String nombre;
     private String direccion;
     private Integer telefono;
-    private Map<String, Integer> medicamentos;
 }
