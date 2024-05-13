@@ -14,5 +14,13 @@ public class Farmacia {
     private String nombre;
     private String direccion;
     private Integer telefono;
-    private Map<String, Integer> medicamentos;
+    private Map<Medicamento, Integer> medicamentos;
+
+    public void solicitarMedicamento(Medicamento medicamento, Integer cantidad) {
+        if (medicamentos.containsKey(medicamento)) {
+            medicamentos.put(medicamento, medicamentos.get(medicamento) + cantidad);
+        } else {
+            medicamentos.put(medicamento, cantidad);
+        }
+    }
 }
