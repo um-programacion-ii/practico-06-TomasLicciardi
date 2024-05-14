@@ -24,13 +24,13 @@ public class GestionTurnoService {
         return instance;
     }
 
-    public void crearTurno(Paciente paciente, Medico medico ) {
-        if (paciente.getObraSocial().equals(null) && medico.getAtenderParticulares()) {
+    public Turno crearTurno(Paciente paciente, Medico medico, Especialidad especialidad)  {
+        if (paciente.getObraSocial() == null && medico.getAtenderParticulares() && medico.getEspecialidad() == especialidad) {
             Turno turno = paciente.solicitarTurno(medico, null, medico.getEspecialidad());
-            turnoDao.crearTurno(turno);
-        } else if (medico.getObraSociales().contains(paciente.getObraSocial()) && !medico.getAtenderParticulares()) {
+            return turnoDao.crearTurno(turno);
+        } else if (paciente.getObraSocial() != null && medico.getObraSociales().contains(paciente.getObraSocial()) && medico.getEspecialidad() == especialidad){
             Turno turno = paciente.solicitarTurno(medico, paciente.getObraSocial(), medico.getEspecialidad());
-            turnoDao.crearTurno(turno);
+            return turnoDao.crearTurno(turno);
         }
         else {
             throw new IllegalArgumentException("Datos introducidos incorrectos");
@@ -38,11 +38,10 @@ public class GestionTurnoService {
     }
 
     public void finalizarTurno(Paciente paciente,Turno turno,Medico medico){
-        paciente.cancelarTurno(turno);
+
         medico.finalizarTurno(turno);
         turnoDao.eliminarTurno(turno.getId());
     }
-
     }
     
 
