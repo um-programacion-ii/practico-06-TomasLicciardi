@@ -11,7 +11,7 @@ public class PacienteDAOIm implements org.example.DAO.interfaces.PacienteDAO {
     private final Map<Integer, Paciente> pacientes = new HashMap<>();
     private int proximoId = 1;
 
-    private PacienteDAOIm() {}
+    public PacienteDAOIm() {}
 
     @Override
     public Paciente crearPaciente(Paciente paciente) {

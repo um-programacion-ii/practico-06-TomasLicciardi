@@ -8,7 +8,7 @@ public class FarmaciaDAOIm implements org.example.DAO.interfaces.FarmaciaDAO {
     private final Map<Integer, Farmacia> farmacias = new HashMap<>();
     private int proximoId = 1;
 
-    private FarmaciaDAOIm() {}
+    public FarmaciaDAOIm() {}
 
     @Override
     public Farmacia crearFarmacia(Farmacia farmacia) {

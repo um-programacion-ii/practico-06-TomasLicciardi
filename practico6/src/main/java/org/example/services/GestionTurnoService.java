@@ -1,5 +1,8 @@
 package org.example.services;
 
+import org.example.DAO.implementations.MedicoDAOIm;
+import org.example.DAO.implementations.PacienteDAOIm;
+import org.example.DAO.implementations.TurnoDAOIm;
 import org.example.DAO.interfaces.*;
 import org.example.entities.*;
 
@@ -12,9 +15,9 @@ public class GestionTurnoService {
     private MedicoDAO medicoDao;
 
     private GestionTurnoService(TurnoDAO turnoDao, PacienteDAO pacienteDao, MedicoDAO medicoDao) {
-        this.turnoDao = turnoDao;
-        this.pacienteDao = pacienteDao;
-        this.medicoDao = medicoDao;
+        turnoDao = new TurnoDAOIm();
+        pacienteDao = new PacienteDAOIm();
+        medicoDao = new MedicoDAOIm();
     }
 
     public static synchronized GestionTurnoService getInstance(TurnoDAO turnoDao, PacienteDAO pacienteDao, MedicoDAO medicoDao) {
@@ -24,24 +27,26 @@ public class GestionTurnoService {
         return instance;
     }
 
-    public Turno crearTurno(Paciente paciente, Medico medico, Especialidad especialidad)  {
-        if (paciente.getObraSocial() == null && medico.getAtenderParticulares() && medico.getEspecialidad() == especialidad) {
-            Turno turno = paciente.solicitarTurno(medico, null, medico.getEspecialidad());
-            return turnoDao.crearTurno(turno);
-        } else if (paciente.getObraSocial() != null && medico.getObraSociales().contains(paciente.getObraSocial()) && medico.getEspecialidad() == especialidad){
+    public Turno crearTurno(Paciente paciente, Medico medico, Especialidad especialidad) {
+        if (((paciente.getObraSocial() == null && medico.getAtenderParticulares()) || medico.getObraSociales().contains(paciente.getObraSocial())) && medico.getEspecialidad() == especialidad) {
             Turno turno = paciente.solicitarTurno(medico, paciente.getObraSocial(), medico.getEspecialidad());
             return turnoDao.crearTurno(turno);
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("Datos introducidos incorrectos");
         }
     }
 
-    public void finalizarTurno(Paciente paciente,Turno turno,Medico medico){
 
-        medico.finalizarTurno(turno);
+    public void finalizarTurno(Paciente paciente, Turno turno, Medico medico) {
+        if (paciente != null && medico != null) {
+            medico.finalizarTurno(turno);
+        } else if (paciente != null && medico == null) {
+            paciente.cancelarTurno(turno);
+        } else {
+            throw new IllegalArgumentException("Paciente o médico no pueden ser nulos");
+        }
         turnoDao.eliminarTurno(turno.getId());
     }
-    }
-    
+
+}
 

@@ -9,7 +9,7 @@ public class EspecialidadDAOIm implements org.example.DAO.interfaces.Especialida
     private final Map<Integer, Especialidad> especialidades = new HashMap<>();
     private int proximoId = 1;
 
-    private EspecialidadDAOIm() {}
+    public EspecialidadDAOIm() {}
     @Override
     public Especialidad crearEspecialidad(Especialidad especialidad) {
         especialidad.setId(proximoId++);

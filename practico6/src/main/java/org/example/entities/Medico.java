@@ -18,8 +18,8 @@ public class Medico {
     private Especialidad especialidad;
     private List<ObraSocial> obraSociales;
     private List<Turno> turnos;
-    private Boolean atenderParticulares;
     private List<Paciente> pacientes;
+    private Boolean atenderParticulares;
 
     public void hacerReceta(Paciente paciente, Map<Medicamento, Integer> medicamentos) {
         Receta receta = new Receta();

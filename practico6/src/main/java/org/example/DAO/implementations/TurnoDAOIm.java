@@ -1,6 +1,7 @@
 package org.example.DAO.implementations;
 
 import org.example.entities.Turno;
+import org.example.entities.Medico;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,7 +9,7 @@ public class TurnoDAOIm implements org.example.DAO.interfaces.TurnoDAO {
     private final Map<Integer, Turno> turnos = new HashMap<>();
     private int proximoId = 1;
 
-    private TurnoDAOIm() {}
+    public TurnoDAOIm() {}
 
     @Override
     public Turno crearTurno(Turno turno) {

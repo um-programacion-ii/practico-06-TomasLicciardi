@@ -13,6 +13,8 @@ public class MedicoDAOIm implements org.example.DAO.interfaces.MedicoDAO {
     private final Map<Integer, Medico> medicos = new HashMap<>();
     private int proximoId = 1;
 
+    public MedicoDAOIm() {}
+
     @Override
     public Medico crearMedico(Medico medico) {
         medico.setId(proximoId++);
@@ -31,15 +33,16 @@ public class MedicoDAOIm implements org.example.DAO.interfaces.MedicoDAO {
     }
 
     @Override
-    public List<Medico> obtenerMedicosPorEspecialidad(Especialidad especialidad) {
-        List<Medico> medicosPorEspecialidad = new ArrayList<>();
+    public Map<Medico, List<ObraSocial>> obtenerMedicosPorEspecialidadyObraSocial(Especialidad especialidad) {
+        Map<Medico, List<ObraSocial>> medicosPorEspecialidadyObraSocial = new HashMap<>();
         for (Medico medico : medicos.values()) {
             if (medico.getEspecialidad().equals(especialidad)) {
-                medicosPorEspecialidad.add(medico);
+                medicosPorEspecialidadyObraSocial.put(medico, medico.getObraSociales());
             }
         }
-        return medicosPorEspecialidad;
+        return medicosPorEspecialidadyObraSocial;
     }
+
 
     @Override
     public List<Medico> obtenerMedicosParticulares() {
@@ -50,17 +53,6 @@ public class MedicoDAOIm implements org.example.DAO.interfaces.MedicoDAO {
             }
         }
         return medicosParticulares;
-    }
-
-    @Override
-    public List<Medico> obtenerMedicosPorObrasSociales(ObraSocial obraSocial) {
-        List<Medico> medicosPorObraSocial = new ArrayList<>();
-        for (Medico medico : medicos.values()) {
-            if (medico.getObraSociales().contains(obraSocial)) {
-                medicosPorObraSocial.add(medico);
-            }
-        }
-        return medicosPorObraSocial;
     }
 
     @Override

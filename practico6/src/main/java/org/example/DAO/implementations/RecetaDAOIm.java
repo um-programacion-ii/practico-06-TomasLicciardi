@@ -8,7 +8,7 @@ public class RecetaDAOIm implements org.example.DAO.interfaces.RecetaDAO {
     private final Map<Integer, Receta> recetas = new HashMap<>();
     private int proximoId = 1;
 
-    private RecetaDAOIm() {}
+    public RecetaDAOIm() {}
 
     @Override
     public Receta crearReceta(Receta receta) {

@@ -8,7 +8,7 @@ public class ObraSocialDAOIm implements org.example.DAO.interfaces.ObraSocialDAO
     private final Map<Integer, ObraSocial> obrasSociales = new HashMap<>();
     private int proximoId = 1;
 
-    private ObraSocialDAOIm() {}
+    public ObraSocialDAOIm() {}
 
     @Override
     public ObraSocial crearObraSocial(ObraSocial obraSocial) {
