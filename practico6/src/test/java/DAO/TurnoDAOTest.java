@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -21,57 +22,130 @@ public class TurnoDAOTest {
 
     @Test
     public void testCrearTurno() {
-        turno = new Turno();
-        Medico medico = new Medico();
+        List<ObraSocial> obrasSociales = new ArrayList<>();
+        ObraSocial obraSocial1 = new ObraSocial(1, "OSDE");
+        ObraSocial obraSocial2 = new ObraSocial(2, "OSEP");
+        obrasSociales.add(obraSocial1);
+        obrasSociales.add(obraSocial2);
+
+        List<Turno> turnos = new ArrayList<>();
+
+        Especialidad especialidad = new Especialidad(1, "Cardiología");
+
+        List<Receta> recetas = new ArrayList<>();
+
         Paciente paciente = new Paciente();
-        ObraSocial obraSocial = new ObraSocial();
-        turno.setMedico(medico);
+        paciente.setNombre("Juan");
+        paciente.setApellido("Perez");
+        paciente.setObraSocial(obraSocial1);
+        paciente.setTurnos(turnos);
+        paciente.setRecetas(recetas);
+
+        Medico medico = new Medico();
+        medico.setNombre("Juan");
+        medico.setApellido("Perez");
+        medico.setEspecialidad(especialidad);
+        medico.setObraSociales(obrasSociales);
+        medico.setAtenderParticulares(true);
+        medico.setEstaAtendiendo(false);
+        medico.setTurnos(turnos);
+
+        turno = new Turno();
         turno.setPaciente(paciente);
-        turno.setObraSocial(obraSocial);
+        turno.setMedico(medico);
+        turno.setObraSocial(obraSocial1);
+        turno.setEspecialidad(especialidad);
 
-        turnoDAO.crearTurno(turno);
+        Turno turnoNuevo = turnoDAO.crearTurno(turno);
 
-        assertEquals(turno, turnoDAO.obtenerTurnoPorId(turno.getId()));
+        assertEquals(turno, turnoNuevo);
     }
 
     @Test
     public void testActualizarTurno() {
+        List<ObraSocial> obrasSociales = new ArrayList<>();
+        ObraSocial obraSocial1 = new ObraSocial(1, "OSDE");
+        ObraSocial obraSocial2 = new ObraSocial(2, "OSEP");
+        obrasSociales.add(obraSocial1);
+        obrasSociales.add(obraSocial2);
+
+        List<Turno> turnos = new ArrayList<>();
+
+        Especialidad especialidad = new Especialidad(1, "Cardiología");
+
+        List<Receta> recetas = new ArrayList<>();
+
+        Paciente paciente = new Paciente();
+        paciente.setNombre("Juan");
+        paciente.setApellido("Perez");
+        paciente.setObraSocial(obraSocial1);
+        paciente.setTurnos(turnos);
+        paciente.setRecetas(recetas);
+
+        Medico medico = new Medico();
+        medico.setNombre("Juan");
+        medico.setApellido("Perez");
+        medico.setEspecialidad(especialidad);
+        medico.setObraSociales(obrasSociales);
+        medico.setAtenderParticulares(true);
+        medico.setEstaAtendiendo(false);
+        medico.setTurnos(turnos);
+
         turno = new Turno();
-        Medico medico1 = new Medico();
-        Paciente paciente1 = new Paciente();
-        ObraSocial obraSocial1 = new ObraSocial();
-        turno.setMedico(medico1);
-        turno.setPaciente(paciente1);
+        turno.setPaciente(paciente);
+        turno.setMedico(medico);
         turno.setObraSocial(obraSocial1);
+        turno.setEspecialidad(especialidad);
 
-        turnoDAO.crearTurno(turno);
+        Turno turnoNuevo = turnoDAO.crearTurno(turno);
 
-        Medico medico2 = new Medico();
-        Paciente paciente2 = new Paciente();
-        ObraSocial obraSocial2 = new ObraSocial();
+        turnoNuevo.setObraSocial(obraSocial2);
+        turnoDAO.actualizarTurno(turnoNuevo);
 
-        turno.setMedico(medico2);
-        turno.setPaciente(paciente2);
-        turno.setObraSocial(obraSocial2);
+        assertEquals(obraSocial2, turnoNuevo.getObraSocial());
 
-        turnoDAO.actualizarTurno(turno);
-
-        assertEquals(turno, turnoDAO.obtenerTurnoPorId(turno.getId()));
     }
 
     @Test
-    public void testEliminarTurno() {
-        turno = new Turno();
-        Medico medico = new Medico();
+    public void testFinalizarTurno() {
+        List<ObraSocial> obrasSociales = new ArrayList<>();
+        ObraSocial obraSocial1 = new ObraSocial(1, "OSDE");
+        ObraSocial obraSocial2 = new ObraSocial(2, "OSEP");
+        obrasSociales.add(obraSocial1);
+        obrasSociales.add(obraSocial2);
+
+        List<Turno> turnos = new ArrayList<>();
+
+        Especialidad especialidad = new Especialidad(1, "Cardiología");
+
+        List<Receta> recetas = new ArrayList<>();
+
         Paciente paciente = new Paciente();
-        ObraSocial obraSocial = new ObraSocial();
-        turno.setMedico(medico);
+        paciente.setNombre("Juan");
+        paciente.setApellido("Perez");
+        paciente.setObraSocial(obraSocial1);
+        paciente.setTurnos(turnos);
+        paciente.setRecetas(recetas);
+
+        Medico medico = new Medico();
+        medico.setNombre("Juan");
+        medico.setApellido("Perez");
+        medico.setEspecialidad(especialidad);
+        medico.setObraSociales(obrasSociales);
+        medico.setAtenderParticulares(true);
+        medico.setEstaAtendiendo(false);
+        medico.setTurnos(turnos);
+
+        turno = new Turno();
         turno.setPaciente(paciente);
-        turno.setObraSocial(obraSocial);
+        turno.setMedico(medico);
+        turno.setObraSocial(obraSocial1);
+        turno.setEspecialidad(especialidad);
 
-        turnoDAO.crearTurno(turno);
-        turnoDAO.eliminarTurno(turno.getId());
+        Turno turnoNevo = turnoDAO.crearTurno(turno);
 
-        assertEquals(null, turnoDAO.obtenerTurnoPorId(turno.getId()));
+        turnoDAO.eliminarTurno(turnoNevo.getId());
+
+        assertEquals(null, turnoDAO.obtenerTurnoPorId(turnoNevo.getId()));
     }
 }

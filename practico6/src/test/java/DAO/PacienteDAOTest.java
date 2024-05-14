@@ -61,6 +61,35 @@ public class PacienteDAOTest {
     }
 
     @Test
+    public void testObtenerPacientes(){
+        paciente = new Paciente();
+        ObraSocial obraSocial = new ObraSocial();
+        List<Receta> recetas = new ArrayList<>();
+        List<Turno> turnos = new ArrayList<>();
+        paciente.setNombre("Juan");
+        paciente.setApellido("Perez");
+        paciente.setId(12345678);
+        paciente.setObraSocial(obraSocial);
+        paciente.setTurnos(turnos);
+        paciente.setRecetas(recetas);
+        Paciente paciente2 = new Paciente();
+        paciente2.setNombre("Pedro");
+        paciente2.setApellido("Gomez");
+        paciente2.setId(12345679);
+        paciente2.setObraSocial(obraSocial);
+        paciente2.setTurnos(turnos);
+        paciente2.setRecetas(recetas);
+
+        pacienteDAO.crearPaciente(paciente);
+        pacienteDAO.crearPaciente(paciente2);
+
+        List<Paciente> pacientes = pacienteDAO.obtenerPacientes();
+        System.out.println(pacientes);
+
+        assertEquals(pacientes, pacienteDAO.obtenerPacientes());
+    }
+
+    @Test
     public void testEliminarPaciente() {
         paciente = new Paciente();
         ObraSocial obraSocial = new ObraSocial();

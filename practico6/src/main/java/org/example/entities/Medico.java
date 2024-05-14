@@ -41,7 +41,6 @@ public class Medico {
 
     public void finalizarTurno(Turno turno) {
         this.turnos.remove(turno);
-        turno.getPaciente().cancelarTurno(turno);
     }
 
 }

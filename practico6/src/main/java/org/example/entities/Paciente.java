@@ -33,8 +33,7 @@ public class Paciente {
     }
 
     public void cancelarTurno(Turno turno) {
-        turnos.remove(turno);
-        turno.getMedico().finalizarTurno(turno);
+        this.turnos.remove(turno);
     }
 
 }
