@@ -4,19 +4,11 @@ import org.example.entities.Turno;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TurnoDAO implements org.example.DAO.interfaces.TurnoDAO {
-    private static TurnoDAO instancia;
+public class TurnoDAOIm implements org.example.DAO.interfaces.TurnoDAO {
     private final Map<Integer, Turno> turnos = new HashMap<>();
     private int proximoId = 1;
 
-    private TurnoDAO() {}
-
-    public static TurnoDAO getInstance() {
-        if (instancia == null) {
-            instancia = new TurnoDAO();
-        }
-        return instancia;
-    }
+    private TurnoDAOIm() {}
 
     @Override
     public Turno crearTurno(Turno turno) {

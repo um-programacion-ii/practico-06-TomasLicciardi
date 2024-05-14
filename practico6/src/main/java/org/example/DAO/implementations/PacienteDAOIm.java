@@ -1,22 +1,17 @@
 package org.example.DAO.implementations;
 
 import org.example.entities.Paciente;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class PacienteDAO implements org.example.DAO.interfaces.PacienteDAO {
-    private static PacienteDAO instancia;
+public class PacienteDAOIm implements org.example.DAO.interfaces.PacienteDAO {
     private final Map<Integer, Paciente> pacientes = new HashMap<>();
     private int proximoId = 1;
 
-    private PacienteDAO() {}
-
-    public static PacienteDAO getInstance() {
-        if (instancia == null) {
-            instancia = new PacienteDAO();
-        }
-        return instancia;
-    }
+    private PacienteDAOIm() {}
 
     @Override
     public Paciente crearPaciente(Paciente paciente) {
@@ -28,6 +23,11 @@ public class PacienteDAO implements org.example.DAO.interfaces.PacienteDAO {
     @Override
     public Paciente obtenerPacientePorId(int id) {
         return pacientes.get(id);
+    }
+
+    @Override
+    public List<Paciente> obtenerPacientes() {
+        return new ArrayList<>(pacientes.values());
     }
 
     @Override

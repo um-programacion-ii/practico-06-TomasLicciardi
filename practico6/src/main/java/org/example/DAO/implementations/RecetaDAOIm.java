@@ -4,19 +4,11 @@ import org.example.entities.Receta;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RecetaDAO implements org.example.DAO.interfaces.RecetaDAO {
-    private static RecetaDAO instancia;
+public class RecetaDAOIm implements org.example.DAO.interfaces.RecetaDAO {
     private final Map<Integer, Receta> recetas = new HashMap<>();
     private int proximoId = 1;
 
-    private RecetaDAO() {}
-
-    public static RecetaDAO getInstance() {
-        if (instancia == null) {
-            instancia = new RecetaDAO();
-        }
-        return instancia;
-    }
+    private RecetaDAOIm() {}
 
     @Override
     public Receta crearReceta(Receta receta) {

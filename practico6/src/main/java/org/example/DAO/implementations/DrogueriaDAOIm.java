@@ -4,19 +4,11 @@ import org.example.entities.Drogueria;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DrogueriaDAO implements org.example.DAO.interfaces.DrogueriaDAO {
-    private static DrogueriaDAO instancia;
+public class DrogueriaDAOIm implements org.example.DAO.interfaces.DrogueriaDAO {
     private final Map<Integer, Drogueria> droguerias = new HashMap<>();
     private int proximoId = 1;
 
-    private DrogueriaDAO() {}
-
-    public static DrogueriaDAO getInstance() {
-        if (instancia == null) {
-            instancia = new DrogueriaDAO();
-        }
-        return instancia;
-    }
+    private DrogueriaDAOIm() {}
 
     @Override
     public Drogueria crearDrogueria(Drogueria drogueria) {

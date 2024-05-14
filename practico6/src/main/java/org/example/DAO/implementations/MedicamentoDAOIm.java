@@ -4,19 +4,11 @@ import org.example.entities.Medicamento;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MedicamentoDAO implements org.example.DAO.interfaces.MedicamentoDAO {
-    private static MedicamentoDAO instancia;
+public class MedicamentoDAOIm implements org.example.DAO.interfaces.MedicamentoDAO {
     private final Map<Integer, Medicamento> medicamentos = new HashMap<>();
     private int proximoId = 1;
 
-    private MedicamentoDAO() {}
-
-    public static MedicamentoDAO getInstance() {
-        if (instancia == null) {
-            instancia = new MedicamentoDAO();
-        }
-        return instancia;
-    }
+    private MedicamentoDAOIm() {}
 
     @Override
     public Medicamento crearMedicamento(Medicamento medicamento) {

@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Turno {
     private Integer id;
-    private Medico medico;
     private Paciente paciente;
+    private Medico medico;
+    private ObraSocial obraSocial;
+    private Especialidad especialidad;
 }

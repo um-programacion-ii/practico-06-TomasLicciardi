@@ -4,19 +4,11 @@ import org.example.entities.ObraSocial;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ObraSocialDAO implements org.example.DAO.interfaces.ObraSocialDAO {
-    private static ObraSocialDAO instancia;
+public class ObraSocialDAOIm implements org.example.DAO.interfaces.ObraSocialDAO {
     private final Map<Integer, ObraSocial> obrasSociales = new HashMap<>();
     private int proximoId = 1;
 
-    private ObraSocialDAO() {}
-
-    public static ObraSocialDAO getInstance() {
-        if (instancia == null) {
-            instancia = new ObraSocialDAO();
-        }
-        return instancia;
-    }
+    private ObraSocialDAOIm() {}
 
     @Override
     public ObraSocial crearObraSocial(ObraSocial obraSocial) {
