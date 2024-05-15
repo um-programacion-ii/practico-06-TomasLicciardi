@@ -20,6 +20,11 @@ public class Paciente {
     public void agregarReceta(Receta receta) {
         recetas.add(receta);
     }
+
+    public void eliminarReceta(Receta receta) {
+        this.recetas.remove(receta);
+    }
+
     public void agregarTurno(Turno turno) {
         turnos.add(turno);
     }

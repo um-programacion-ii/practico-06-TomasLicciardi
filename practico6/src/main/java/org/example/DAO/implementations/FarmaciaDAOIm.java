@@ -1,7 +1,10 @@
 package org.example.DAO.implementations;
 
 import org.example.entities.Farmacia;
+import org.example.entities.Medicamento;
+
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class FarmaciaDAOIm implements org.example.DAO.interfaces.FarmaciaDAO {
@@ -20,6 +23,11 @@ public class FarmaciaDAOIm implements org.example.DAO.interfaces.FarmaciaDAO {
     @Override
     public Farmacia obtenerFarmaciaPorId(int id) {
         return farmacias.get(id);
+    }
+
+    @Override
+    public List<Medicamento> obtenerMedicamentosPorFarmacia(Farmacia farmacia) {
+        return farmacia.getMedicamentos().keySet().stream().toList();
     }
 
     @Override

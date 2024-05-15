@@ -2,7 +2,10 @@ package org.example.DAO.implementations;
 
 import org.example.entities.Turno;
 import org.example.entities.Medico;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class TurnoDAOIm implements org.example.DAO.interfaces.TurnoDAO {
@@ -18,6 +21,11 @@ public class TurnoDAOIm implements org.example.DAO.interfaces.TurnoDAO {
         turno.getMedico().agregarTurno(turno);
         turno.getPaciente().agregarTurno(turno);
         return turno;
+    }
+
+    @Override
+    public List<Turno> obtenerTurnos() {
+        return new ArrayList<>(turnos.values());
     }
 
     @Override

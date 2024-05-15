@@ -15,4 +15,8 @@ public class Receta {
     private Paciente paciente;
     private Medico medico;
     private Map<Medicamento,Integer> medicamentos;
+
+    public void eliminarMedicamento(Medicamento medicamento) {
+        this.medicamentos.remove(medicamento);
+    }
 }
