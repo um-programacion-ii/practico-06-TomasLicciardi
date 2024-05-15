@@ -14,6 +14,7 @@ public class RecetaDAOIm implements org.example.DAO.interfaces.RecetaDAO {
     public Receta crearReceta(Receta receta) {
         receta.setId(proximoId++);
         recetas.put(receta.getId(), receta);
+        receta.getPaciente().agregarReceta(receta);
         return receta;
     }
 

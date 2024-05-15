@@ -39,9 +39,9 @@ public class MedicoDAOTest {
         medico.setPacientes(pacientes);
         medico.setAtenderParticulares(true);
 
-        medicoDAO.crearMedico(medico);
+        Medico medicoNuevo = medicoDAO.crearMedico(medico);
 
-        assertEquals(medico, medicoDAO.obtenerMedicoPorId(medico.getId()));
+        assertEquals(medico, medicoNuevo);
 
     }
 

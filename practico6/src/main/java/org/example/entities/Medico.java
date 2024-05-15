@@ -24,7 +24,8 @@ public class Medico {
     public void hacerReceta(Paciente paciente, Map<Medicamento, Integer> medicamentos) {
         Receta receta = new Receta();
         receta.setMedicamentos(medicamentos);
-        paciente.agregarReceta(receta);
+        receta.setPaciente(paciente);
+        receta.setMedico(this);
     }
 
     public void agregarTurno(Turno turno) {

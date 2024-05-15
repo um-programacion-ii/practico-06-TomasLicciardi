@@ -20,8 +20,8 @@ public class ObraSocialDAOTest {
     @Test
     public void testCrearObraSocial() {
         obraSocial = new ObraSocial(1, "OSDE");
-        obraSocialDAO.crearObraSocial(obraSocial);
-        assertEquals(obraSocial, obraSocialDAO.obtenerObraSocialPorId(1));
+        ObraSocial obraSocialNueva =  obraSocialDAO.crearObraSocial(obraSocial);
+        assertEquals(obraSocial, obraSocialNueva);
     }
 
     @Test

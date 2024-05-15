@@ -29,8 +29,6 @@ public class GestionTurnoService {
 
     public Turno crearTurno(Paciente paciente, Medico medico, Especialidad especialidad) {
         if (((paciente.getObraSocial() == null && medico.getAtenderParticulares()) || medico.getObraSociales().contains(paciente.getObraSocial())) && medico.getEspecialidad() == especialidad) {
-//            paciente.agregarTurno(paciente.solicitarTurno(medico, paciente.getObraSocial(), medico.getEspecialidad()));
-//            medico.agregarTurno(paciente.solicitarTurno(medico, paciente.getObraSocial(), medico.getEspecialidad()));
             return turnoDao.crearTurno(paciente.solicitarTurno(medico, paciente.getObraSocial(), medico.getEspecialidad()));
         } else {
             throw new IllegalArgumentException("Datos introducidos incorrectos");

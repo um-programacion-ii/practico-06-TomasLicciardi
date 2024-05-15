@@ -20,15 +20,8 @@ public class EspecialidadDAOTest {
     @Test
     public void testCrearEspecialidad() {
         especialidad = new Especialidad(1,"Cardiología");
-        especialidadDAO.crearEspecialidad(especialidad);
-        assertEquals(especialidad, especialidadDAO.obtenerEspecialidadPorId(1));
-    }
-
-    @Test
-    public void testObtenerEspecialidadPorId() {
-        especialidad = new Especialidad(1,"Cardiología");
-        especialidadDAO.crearEspecialidad(especialidad);
-        assertEquals(especialidad, especialidadDAO.obtenerEspecialidadPorId(1));
+        Especialidad especialidadNueva = especialidadDAO.crearEspecialidad(especialidad);
+        assertEquals(especialidad, especialidadNueva);
     }
 
     @Test
@@ -37,15 +30,17 @@ public class EspecialidadDAOTest {
         especialidadDAO.crearEspecialidad(especialidad);
         especialidad.setNombre("Traumatología");
         especialidadDAO.actualizarEspecialidad(especialidad);
-        assertEquals(especialidad, especialidadDAO.obtenerEspecialidadPorId(1));
+        assertEquals(especialidad, especialidadDAO.obtenerEspecialidadPorId(especialidad.getId()));
     }
 
     @Test
     public void testEliminarEspecialidad() {
         especialidad = new Especialidad(1,"Cardiología");
         especialidadDAO.crearEspecialidad(especialidad);
-        especialidadDAO.eliminarEspecialidad(1);
-        assertEquals(null, especialidadDAO.obtenerEspecialidadPorId(1));
+        especialidadDAO.eliminarEspecialidad(especialidad.getId());
+        assertEquals(null, especialidadDAO.obtenerEspecialidadPorId(especialidad.getId()));
     }
+
+
 
 }

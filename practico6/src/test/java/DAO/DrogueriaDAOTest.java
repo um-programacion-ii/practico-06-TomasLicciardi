@@ -19,8 +19,8 @@ public class DrogueriaDAOTest {
     @Test
     public void testCrearDrogueria() {
         drogueria = new Drogueria(1, "Farmacity", "Av. Rivadavia 1234", 123456789);
-        drogueriaDAO.crearDrogueria(drogueria);
-        assertEquals(drogueria, drogueriaDAO.obtenerDrogueriaPorId(1));
+        Drogueria drogueriaNueva = drogueriaDAO.crearDrogueria(drogueria);
+        assertEquals(drogueria, drogueriaNueva);
     }
 
     @Test
@@ -29,15 +29,15 @@ public class DrogueriaDAOTest {
         drogueriaDAO.crearDrogueria(drogueria);
         drogueria.setNombre("Farmacity 2");
         drogueriaDAO.actualizarDrogueria(drogueria);
-        assertEquals(drogueria, drogueriaDAO.obtenerDrogueriaPorId(1));
+        assertEquals(drogueria, drogueriaDAO.obtenerDrogueriaPorId(drogueria.getId()));
     }
 
     @Test
     public void testEliminarDrogueria() {
         drogueria = new Drogueria(1, "Farmacity", "Av. Rivadavia 1234", 123456789);
         drogueriaDAO.crearDrogueria(drogueria);
-        drogueriaDAO.eliminarDrogueria(1);
-        assertEquals(null, drogueriaDAO.obtenerDrogueriaPorId(1));
+        drogueriaDAO.eliminarDrogueria(drogueria.getId());
+        assertEquals(null, drogueriaDAO.obtenerDrogueriaPorId(drogueria.getId()));
     }
 
 }

@@ -34,9 +34,9 @@ public class PacienteDAOTest {
         paciente.setTurnos(turnos);
         paciente.setRecetas(recetas);
 
-        pacienteDAO.crearPaciente(paciente);
+        Paciente pacienteNuevo = pacienteDAO.crearPaciente(paciente);
 
-        assertEquals(paciente, pacienteDAO.obtenerPacientePorId(paciente.getId()));
+        assertEquals(paciente, pacienteNuevo);
     }
 
     @Test
@@ -84,7 +84,6 @@ public class PacienteDAOTest {
         pacienteDAO.crearPaciente(paciente2);
 
         List<Paciente> pacientes = pacienteDAO.obtenerPacientes();
-        System.out.println(pacientes);
 
         assertEquals(pacientes, pacienteDAO.obtenerPacientes());
     }

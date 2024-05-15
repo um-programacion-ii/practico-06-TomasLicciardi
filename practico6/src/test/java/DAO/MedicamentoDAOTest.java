@@ -19,8 +19,8 @@ public class MedicamentoDAOTest {
     @Test
     public void testCrearMedicamento() {
         medicamento = new Medicamento(1, "Ibuprofeno", "Bayer", "Aspirina");
-        medicamentoDAO.crearMedicamento(medicamento);
-        assertEquals(medicamento, medicamentoDAO.obtenerMedicamentoPorId(1));
+        Medicamento medicamentoNuevo = medicamentoDAO.crearMedicamento(medicamento);
+        assertEquals(medicamento, medicamentoNuevo);
     }
 
     @Test

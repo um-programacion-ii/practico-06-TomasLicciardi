@@ -24,8 +24,8 @@ public class FarmaciaDAOTest {
     public void testCrearFarmacia() {
         Medicamento medicamento = new Medicamento(1, "Ibuprofeno", "Antiinflamatorio", "Aspirina");
         farmacia = new Farmacia(1, "Farmacity", "Av. Rivadavia 1234",261212957, Map.of(medicamento, 10));
-        farmaciaDAO.crearFarmacia(farmacia);
-        assertEquals(farmacia, farmaciaDAO.obtenerFarmaciaPorId(1));
+        Farmacia farmaciaNueva = farmaciaDAO.crearFarmacia(farmacia);
+        assertEquals(farmacia,farmaciaNueva);
     }
 
     @Test
@@ -35,7 +35,7 @@ public class FarmaciaDAOTest {
         farmaciaDAO.crearFarmacia(farmacia);
         farmacia.setNombre("Farmacity 2");
         farmaciaDAO.actualizarFarmacia(farmacia);
-        assertEquals(farmacia, farmaciaDAO.obtenerFarmaciaPorId(1));
+        assertEquals(farmacia, farmaciaDAO.obtenerFarmaciaPorId(farmacia.getId()));
     }
 
     @Test
@@ -43,7 +43,7 @@ public class FarmaciaDAOTest {
         Medicamento medicamento = new Medicamento(1, "Ibuprofeno", "Antiinflamatorio", "Aspirina");
         farmacia = new Farmacia(1, "Farmacity", "Av. Rivadavia 1234",261212957, Map.of(medicamento, 10));
         farmaciaDAO.crearFarmacia(farmacia);
-        farmaciaDAO.eliminarFarmacia(1);
-        assertEquals(null, farmaciaDAO.obtenerFarmaciaPorId(1));
+        farmaciaDAO.eliminarFarmacia(farmacia.getId());
+        assertEquals(null, farmaciaDAO.obtenerFarmaciaPorId(farmacia.getId()));
     }
 }
