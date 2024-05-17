@@ -60,7 +60,7 @@ public class GestionTurnoTest {
         paciente1.setId(1);
         paciente1.setNombre("Maria");
         paciente1.setApellido("Gomez");
-        paciente1.setObraSocial(null);
+        paciente1.setObraSocial(obraSocial1);
         List<Receta> recetas = new ArrayList<>();
         paciente1.setRecetas(recetas);
         List<Turno> turnospaciente = new ArrayList<>();
@@ -71,9 +71,10 @@ public class GestionTurnoTest {
         turno.setMedico(medico1);
         turno.setPaciente(paciente1);
         turno.setEspecialidad(especialidad);
-        turno.setObraSocial(null);
+        turno.setObraSocial(obraSocial1);
 
-        Turno turnoNuevo = gestionTurnoService.crearTurno(paciente1, medico1,especialidad );
+        Turno turnoNuevo = gestionTurnoService.crearTurno(paciente1, medico1,especialidad);
+
         assertEquals(turno, turnoNuevo);
     }
 
@@ -117,6 +118,7 @@ public class GestionTurnoTest {
         turno.setObraSocial(null);
 
         Turno turnoNuevo = gestionTurnoService.crearTurno(paciente1, medico1,especialidad);
+
 
         gestionTurnoService.finalizarTurno(paciente1, turnoNuevo, medico1);
         assertEquals(0, medico1.getTurnos().size());
